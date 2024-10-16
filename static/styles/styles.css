@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('https://images.pexels.com/photos/6941883/pexels-photo-6941883.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1');
+    background-image: url('static/images/image.jpg');
     background-size: cover;
     background-position: center;
     color: #333;
@@ -11,12 +13,25 @@ body {
     align-items: center;
 }
 
+h1, h2 {
+    font-family: "Protest Strike", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 h1 {
     text-align: center;
     color: #007bff;
     margin-bottom: 20px;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-    font-size: 2.5em;
+    font-size: 3em;
+}
+
+h2 {
+    text-align: center;
+    color: #28a745;
+    margin-top: 20px;
+    font-size: 2em;
 }
 
 form {
@@ -29,9 +44,7 @@ form {
     transition: transform 0.3s;
 }
 
-form:hover {
-    transform: translateY(-5px);
-}
+  
 
 label {
     display: block;
@@ -71,13 +84,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
     transform: translateY(-2px);
-}
-
-h2 {
-    text-align: center;
-    color: #28a745;
-    margin-top: 20px;
-    font-size: 1.5em;
 }
 
 table {
