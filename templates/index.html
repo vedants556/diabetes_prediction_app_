@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css')}}"></head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        
+        <!-- Prediction Form -->
+        <form action="/predict" method="POST">
+            <h2>Input Features</h2>
+            <label for="pregnancies">Pregnancies:</label>
+            <input type="number" id="pregnancies" name="pregnancies" required><br>
+            
+            <label for="glucose">Glucose:</label>
+            <input type="number" id="glucose" name="glucose" required><br>
+            
+            <label for="blood_pressure">Blood Pressure:</label>
+            <input type="number" id="blood_pressure" name="blood_pressure" required><br>
+            
+            <label for="skin_thickness">Skin Thickness:</label>
+            <input type="number" id="skin_thickness" name="skin_thickness" required><br>
+            
+            <label for="insulin">Insulin:</label>
+            <input type="number" id="insulin" name="insulin" required><br>
+            
+            <label for="bmi">BMI:</label>
+            <input type="number" step="0.1" id="bmi" name="bmi" required><br>
+            
+            <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label>
+            <input type="number" step="0.01" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required><br>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+            
+            <label for="model">Select Model:</label>
+            <select id="model" name="model" required>
+                <option value="logistic">Logistic Regression</option>
+                <option value="decision_tree">Decision Tree</option>
+                <option value="knn">KNN</option>
+                <option value="random_forest">Random Forest</option>
+                <option value="gradient_boosting">Gradient Boosting</option>
+                <option value="svc">SVC</option>
+                <option value="naive_bayes">Naive Bayes</option>
+                <option value="adaboost">AdaBoost</option>
+                <option value="xgboost">XGBoost</option>
+                <option value="extra_trees">Extra Trees</option>
+            </select><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Prediction Result -->
+        {% if prediction %}
+        <h2>Prediction Result</h2>
+        <p>{{ prediction }}</p>
+        {% endif %}
+
+        <!-- Information Table -->
+        <h2>Diabetes-Related Terms and Normal Ranges</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Term</th>
+                    <th>Description</th>
+                    <th>Normal Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pregnancies</td>
+                    <td>Number of times a person has been pregnant.</td>
+                    <td>No specific range; varies widely.</td>
+                </tr>
+                <tr>
+                    <td>Glucose</td>
+                    <td>Blood glucose level measured in mg/dL.</td>
+                    <td>Fasting: 70 to 99 mg/dL<br>2 hours post-meal: less 140 mg/dL</td>
+                </tr>
+                <tr>
+                    <td>Blood Pressure</td>
+                    <td>Pressure in the arteries during heartbeats.</td>
+                    <td>Systolic less 120 mm Hg<br>Diastolic less 80 mm Hg</td>
+                </tr>
+                <tr>
+                    <td>Skin Thickness</td>
+                    <td>Thickness of skin fold at the triceps.</td>
+                    <td>Generally less 20 mm</td>
+                </tr>
+                <tr>
+                    <td>Insulin</td>
+                    <td>Insulin level in the blood, measured in μU/mL.</td>
+                    <td>Normal fasting: 2 to 25 μU/mL</td>
+                </tr>
+                <tr>
+                    <td>BMI</td>
+                    <td>Body Mass Index, a measure of body fat.</td>
+                    <td>Normal: 18.5 to 24.9</td>
+                </tr>
+                <tr>
+                    <td>Diabetes Pedigree Function</td>
+                    <td>Score assessing genetic influence on diabetes.</td>
+                    <td>No specific range; lower is better.</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>Age of the individual in years.</td>
+                    <td>No specific range; varies widely.</td>
+                </tr>
+                <tr>
+                    <td>Outcome</td>
+                    <td>Indicates presence (1) or absence (0) of diabetes.</td>
+                    <td>Binary: 0 or 1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
