@@ -57,12 +57,12 @@ def predict():
         prediction = model.predict(features_array)
 
         # Return the result
-        result = "You have diabetes." if prediction[0] == 1 else "You do not have diabetes."
+        result = "1" if prediction[0] == 1 else "0"
         
         return render_template('index.html', prediction=result)
 
     except Exception as e:
-        return render_template('index.html', prediction=f"An error occurred: {str(e)}")
+        return render_template('index.html', prediction="error", error_message=str(e))
 
 if __name__ == '__main__':
     app.run(debug=True)

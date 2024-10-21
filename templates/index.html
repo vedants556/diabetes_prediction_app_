@@ -154,31 +154,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-         const prediction = "{{ 1 }}"; // Replace with actual prediction value (0, 1, or '')
-    
+        const prediction = "{{ prediction }}";
+        const errorMessage = "{{ error_message }}";
+
         const resultTitle = document.getElementById('result-title');
         const resultText = document.getElementById('result-text');
         const predictionResultDiv = document.getElementById('prediction-result');
         const noInputWarning = document.getElementById('no-input-warning');
-    
-        // Check if no input has been entered
-        if (!prediction) {
+
+        if (prediction === "") {
             noInputWarning.style.display = "block";
             predictionResultDiv.style.display = "none";
         } else {
             noInputWarning.style.display = "none";
             predictionResultDiv.style.display = "block";
-    
-            if (prediction === "0") { // No diabetes
+
+            if (prediction === "0") {
                 resultTitle.textContent = "Congratulations!";
                 resultText.textContent = "You do not have diabetes.";
                 predictionResultDiv.className = "alert alert-success text-center";
-                // Trigger confetti animation
                 confetti();
-            } else { // Diabetes detected
-                resultTitle.textContent = "Diagnosis: ";
+            } else if (prediction === "1") {
+                resultTitle.textContent = "Diagnosis:";
                 resultText.textContent = "You have diabetes.";
                 predictionResultDiv.className = "alert alert-danger text-center";
+            } else if (prediction === "error") {
+                resultTitle.textContent = "Error";
+                resultText.textContent = "An error occurred: " + errorMessage;
+                predictionResultDiv.className = "alert alert-warning text-center";
             }
         }
     </script>
