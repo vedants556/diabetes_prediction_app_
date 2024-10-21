@@ -59,21 +59,10 @@
                         <label for="age" class="form-label">Age:</label>
                         <input type="number" id="age" name="age" class="form-control" min="0" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="model" class="form-label">Select Model:</label>
-                        <select id="model" name="model" class="form-select" required>
-                            <option value="logistic">Logistic Regression</option>
-                            <option value="decision_tree">Decision Tree</option>
-                            <option value="knn">KNN</option>
-                            <option value="random_forest">Random Forest</option>
-                            <option value="gradient_boosting">Gradient Boosting</option>
-                            <option value="svc">SVC</option>
-                            <option value="naive_bayes">Naive Bayes</option>
-                            <option value="adaboost">AdaBoost</option>
-                            <option value="xgboost">XGBoost</option>
-                            <option value="extra_trees">Extra Trees</option>
-                        </select>
-                    </div>
+                    
+                    <!-- Add a hidden input field for the model -->
+                    <input type="hidden" name="model" value="logistic">
+                    
                     <button type="submit" class="btn btn-primary">Predict</button>
                 </form>
             </div>

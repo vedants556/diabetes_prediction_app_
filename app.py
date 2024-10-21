@@ -10,7 +10,7 @@ try:
         'logistic': joblib.load('logistic_model.joblib'),
         'decision_tree': joblib.load('decision_tree_model.joblib'),
         'knn': joblib.load('knn_model.joblib'),
-        'random_forest': joblib.load('random_forest_model.joblib'),
+        'random_forest': joblib.load('best_random_forest_model.joblib'),
         'gradient_boosting': joblib.load('gradient_boosting_model.joblib'),
         'svc': joblib.load('svc_model.joblib'),
         'naive_bayes': joblib.load('naive_bayes_model.joblib'),
@@ -28,10 +28,8 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get the model choice from the form
-        model_choice = request.form.get('model')
-        if model_choice not in models:
-            return render_template('index.html', prediction="Invalid model selected.")
+        # The model is now always 'decision_tree'
+        model_choice = 'random_forest'
 
         # Extract and validate input features from the form
         features = []
@@ -41,7 +39,7 @@ def predict():
         for field in fields:
             value = request.form.get(field)
             if value is None:
-                return render_template('index.html', prediction=f"Missing input for {field}.")
+                return render_template('index.html', prediction="Missing input for {field}.")
             try:
                 features.append(float(value))
             except ValueError:
@@ -50,7 +48,7 @@ def predict():
         # Create feature array
         features_array = np.array([features])
 
-        # Retrieve the selected model
+        # Use the logistic regression model
         model = models[model_choice]
 
         # Make a prediction
