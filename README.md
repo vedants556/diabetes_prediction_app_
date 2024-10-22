@@ -36,8 +36,7 @@ This project is a web application that predicts the likelihood of diabetes based
 
 1. Clone the repository:
    ```
-   git clone  https://github.com/vedants556/diabetes_prediction_app
-   cd diabetes-prediction-app
+   git clone  https://github.com/vedants556/diabetes_prediction_app_
    ```
 
 2. Install the required dependencies:
